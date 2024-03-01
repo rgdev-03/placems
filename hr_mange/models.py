@@ -40,14 +40,14 @@ class Staff(models.Model):
     staff_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    staff_code = models.CharField(max_length=20, unique=True, null=False)
-    password = models.CharField(max_length=255, null=False)
+    # staff_code = models.CharField(max_length=20, unique=True, null=False)
+    # password = models.CharField(max_length=255, null=False)
     mobile = models.CharField(max_length=15, null=True)
     staff_type = models.CharField(max_length=50, null=False)
-    email = models.EmailField(null=True)
+    email = models.CharField(max_length=100,null=True)
     
     def __str__(self):
-        return f"{self.name} - {self.staff_code} - {self.branch}"
+        return f"{self.name}  {self.branch}"
 
 class Certi_Skills(models.Model):
     id = models.AutoField(primary_key=True)
