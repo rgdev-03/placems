@@ -1,67 +1,60 @@
-from rest_framework import generics
+from rest_framework import viewsets,generics
 from .models import Batch, Branch, Student, Staff, Certi_Skills, Projects, Achievements, Academic_Per
 from .serializers import BatchSerializer, BranchSerializer, StudentSerializer, StaffSerializer, Certi_SkillsSerializer, ProjectsSerializer, AchievementsSerializer, Academic_PerSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
-class BatchListCreateView(generics.ListCreateAPIView):
+
+class BatchViewSet(viewsets.ModelViewSet):
     queryset = Batch.objects.all()
     serializer_class = BatchSerializer
 
-class BatchDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Batch.objects.all()
-    serializer_class = BatchSerializer
-
-class BranchListCreateView(generics.ListCreateAPIView):
+class BranchViewSet(viewsets.ModelViewSet):
     queryset = Branch.objects.all()
     serializer_class = BranchSerializer
 
-class BranchDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Branch.objects.all()
-    serializer_class = BranchSerializer
-
-class StudentListCreateView(generics.ListCreateAPIView):
+class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Student.objects.all()
+
+
+
+class StaffViewSet(viewsets.ModelViewSet):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer
+    
+
+class Certi_SkillsViewSet(viewsets.ModelViewSet):
+    queryset = Certi_Skills.objects.all()
+    serializer_class = Certi_SkillsSerializer
+
+class ProjectsViewSet(viewsets.ModelViewSet):
+    queryset = Projects.objects.all()
+    serializer_class = ProjectsSerializer
+
+class AchievementsViewSet(viewsets.ModelViewSet):
+    queryset = Achievements.objects.all()
+    serializer_class = AchievementsSerializer
+
+class Academic_PerViewSet(viewsets.ModelViewSet):
+    queryset = Academic_Per.objects.all()
+    serializer_class = Academic_PerSerializer
+
+
+# Filters
+
+class StudentFilterView(generics.ListAPIView):
     serializer_class = StudentSerializer
 
-class StaffListCreateView(generics.ListCreateAPIView):
-    queryset = Staff.objects.all()
-    serializer_class = StaffSerializer
+    queryset = Student.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user']  # Define fields for filtering
 
-class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Staff.objects.all()
-    serializer_class = StaffSerializer
-
-class Certi_SkillsListCreateView(generics.ListCreateAPIView):
-    queryset = Certi_Skills.objects.all()
+# get the student certificate by the std_id
+class StdCertificate(generics.ListAPIView):
     serializer_class = Certi_SkillsSerializer
 
-class Certi_SkillsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Certi_Skills.objects.all()
-    serializer_class = Certi_SkillsSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['std_id']  
 
-class ProjectsListCreateView(generics.ListCreateAPIView):
-    queryset = Projects.objects.all()
-    serializer_class = ProjectsSerializer
-
-class ProjectsDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Projects.objects.all()
-    serializer_class = ProjectsSerializer
-
-class AchievementsListCreateView(generics.ListCreateAPIView):
-    queryset = Achievements.objects.all()
-    serializer_class = AchievementsSerializer
-
-class AchievementsDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Achievements.objects.all()
-    serializer_class = AchievementsSerializer
-
-class Academic_PerListCreateView(generics.ListCreateAPIView):
-    queryset = Academic_Per.objects.all()
-    serializer_class = Academic_PerSerializer
-
-class Academic_PerDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Academic_Per.objects.all()
-    serializer_class = Academic_PerSerializer
