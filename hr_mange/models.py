@@ -70,8 +70,8 @@ class Projects(models.Model):
     std_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     project_type = models.CharField(max_length=50, null=False)
     project_name = models.CharField(max_length=255, null=False)
-    project_specification = models.TextField(null=False)
-    project_repo_url = models.URLField(null=True)
+    # project_specification = models.TextField(null=False)
+    project_repo_url = models.CharField(max_length=255,null=True)
     certificate = models.ImageField(upload_to='project_certificates/', null=True)
 
 class Achievements(models.Model):
@@ -83,7 +83,7 @@ class Achievements(models.Model):
 
 class Academic_Per(models.Model):
     id = models.AutoField(primary_key=True)
-    std_id = models.ForeignKey(Student, on_delete=models.CASCADE,)
+    std_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     acad_sem = models.CharField(max_length=255, null=False)
     acad_sgpa = models.CharField(max_length=255, null=False)
     # sem10th = models.CharField(max_length=255, null=False)

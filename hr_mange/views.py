@@ -56,5 +56,22 @@ class StdCertificate(generics.ListAPIView):
 
     queryset = Certi_Skills.objects.all()
     filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['std_id'] 
+
+# get the student Projects by the std_id
+
+class StdProjects(generics.ListAPIView):
+    serializer_class = ProjectsSerializer
+
+    queryset = Projects.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['std_id'] 
+
+
+class StdAcademic(generics.ListAPIView):
+    serializer_class = Academic_PerSerializer
+
+    queryset = Academic_Per.objects.all()
+    filter_backends = [DjangoFilterBackend]
     filterset_fields = ['std_id']  
 
