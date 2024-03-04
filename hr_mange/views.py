@@ -50,6 +50,13 @@ class StudentFilterView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['user']  # Define fields for filtering
 
+class StudentDataFilter(generics.ListAPIView):
+    serializer_class = StudentSerializer
+
+    queryset = Student.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['batch','branch','sem','sec'] 
+
 # Staff Filter using UserID
 class StaffFilterView(generics.ListAPIView):
     serializer_class = StaffSerializer

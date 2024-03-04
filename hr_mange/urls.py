@@ -18,7 +18,9 @@ urlpatterns = [
     path('stdcert/', views.StdCertificate.as_view(), name='certificate_Filter'), 
     path('stdproj/', views.StdProjects.as_view(), name='project_Filter'), 
     path('stdacd/', views.StdAcademic.as_view(), name='academic_Filter'), 
-    path('staffuser/', views.StaffFilterView.as_view(), name='staff_Filter'), 
+    path('staffuser/', views.StaffFilterView.as_view(), name='staff_Filter'),
+    path('stddata/', views.StudentDataFilter.as_view(), name='studnetData_Filter'), 
+ 
 
 
 
