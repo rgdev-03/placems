@@ -3,7 +3,7 @@ from .models import CustomUser
 from django.contrib.auth import get_user_model
 
 
-from .serializers import UserSerializer, UserCreateSerializer
+from .serializers import UserSerializer
 from django.shortcuts import redirect
 from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password

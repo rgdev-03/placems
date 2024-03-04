@@ -50,6 +50,14 @@ class StudentFilterView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['user']  # Define fields for filtering
 
+# Staff Filter using UserID
+class StaffFilterView(generics.ListAPIView):
+    serializer_class = StaffSerializer
+
+    queryset = Staff.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user']  
+
 # get the student certificate by the std_id
 class StdCertificate(generics.ListAPIView):
     serializer_class = Certi_SkillsSerializer
