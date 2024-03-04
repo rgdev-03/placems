@@ -90,3 +90,11 @@ class StdAcademic(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['std_id']  
 
+class StudentData2Filter(generics.ListAPIView):
+    serializer_class = StudentSerializer
+
+    queryset = Student.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['batch','branch','sem'] 
+
+
