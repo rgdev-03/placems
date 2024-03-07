@@ -21,5 +21,6 @@ urlpatterns = [
     path('staffuser/', views.StaffFilterView.as_view(), name='staff_Filter'),
     path('stddata/', views.StudentDataFilter.as_view(), name='studnetData_Filter'),
     path('std2data/', views.StudentData2Filter.as_view(), name='studnetData2_Filter'),  
- 
+    path('stdcertspec/', views.StdCertificateSpec.as_view(), name='studnet_certificate_spec'),  
+    path('stdacadsgpa/', views.StdAcademicSgpa.as_view(), name='studnet_sgpa_filter'),  
 ]

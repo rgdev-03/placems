@@ -63,6 +63,8 @@ class Certi_Skills(models.Model):
     certi_e_date = models.DateField()
     image_upload = models.ImageField(upload_to='certification_images/', null=True)
     org = models.CharField(max_length=255,default="aa")
+    specification = models.CharField(max_length=255,default="aa")
+
 
 
 class Projects(models.Model):
@@ -86,6 +88,11 @@ class Academic_Per(models.Model):
     std_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     acad_sem = models.CharField(max_length=255, null=False)
     acad_sgpa = models.CharField(max_length=255, null=False)
+    batch = models.ForeignKey(Batch, on_delete=models.CASCADE,default=1)
+
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE,default=1)
+
+    
     # sem10th = models.CharField(max_length=255, null=False)
     # sem12th_diploma = models.CharField(max_length=255, null=False)
     

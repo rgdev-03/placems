@@ -73,6 +73,15 @@ class StdCertificate(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['std_id'] 
 
+
+# get the student certificate by the Specification
+class StdCertificateSpec(generics.ListAPIView):
+    serializer_class = Certi_SkillsSerializer
+
+    queryset = Certi_Skills.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['specification'] 
+
 # get the student Projects by the std_id
 
 class StdProjects(generics.ListAPIView):
@@ -82,13 +91,21 @@ class StdProjects(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['std_id'] 
 
-
+# academic filter with the student id
 class StdAcademic(generics.ListAPIView):
     serializer_class = Academic_PerSerializer
 
     queryset = Academic_Per.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['std_id']  
+
+# academic filter for the faculty with sgpa filter 
+class StdAcademicSgpa(generics.ListAPIView):
+    serializer_class = Academic_PerSerializer
+
+    queryset = Academic_Per.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['batch','branch','acad_sem','acad_sgpa']  
 
 class StudentData2Filter(generics.ListAPIView):
     serializer_class = StudentSerializer
