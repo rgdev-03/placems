@@ -22,8 +22,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('hr_mange.urls')),
-    path('user/', include('users.urls')),
 
     path("userdetails", UserDetailView.as_view(), name="user-details"),
 
